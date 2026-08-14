@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Profesional - Formulario Multipaso</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <main class="app-container">
+        <!-- Indicador de Progreso Lateral / Superior -->
+        <aside class="progress-sidebar" aria-label="Progreso del formulario">
+            <div class="brand-header">
+                <h2>Portal de Registro</h2>
+                <p>Complete los pasos para continuar</p>
+            </div>
+            <ul class="stepper-list">
+                <li class="stepper-item active" data-step="1">
+                    <span class="step-icon"><i data-lucide="user"></i></span>
+                    <div class="step-info">
+                        <span class="step-title">Personal</span>
+                        <span class="step-status">Paso actual</span>
+                    </div>
+                </li>
+                <li class="stepper-item" data-step="2">
+                    <span class="step-icon"><i data-lucide="briefcase"></i></span>
+                    <div class="step-info">
+                        <span class="step-title">Adicional</span>
+                        <span class="step-status">Pendiente</span>
+                    </div>
+                </li>
+                <li class="stepper-item" data-step="3">
+                    <span class="step-icon"><i data-lucide="sliders"></i></span>
+                    <div class="step-info">
+                        <span class="step-title">Preferencias</span>
+                        <span class="step-status">Pendiente</span>
+                    </div>
+                </li>
+                <li class="stepper-item" data-step="4">
+                    <span class="step-icon"><i data-lucide="folder-up"></i></span>
+                    <div class="step-info">
+                        <span class="step-title">Archivos</span>
+                        <span class="step-status">Pendiente</span>
+                    </div>
+                </li>
+                <li class="stepper-item" data-step="5">
+                    <span class="step-icon"><i data-lucide="check-circle-2"></i></span>
+                    <div class="step-info">
+                        <span class="step-title">Confirmación</span>
+                        <span class="step-status">Pendiente</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="progress-bar-container">
+                <div class="progress-stats">
+                    <span>Progreso total</span>
+                    <span id="progress-percentage">20%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progress-fill" style="width: 20%;"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Contenedor Principal del Formulario -->
+        <section class="form-content-wrapper">
+            <header class="form-header">
+                <h1 id="step-main-title">Información personal</h1>
+                <p id="step-main-desc">Por favor, introduce tus datos básicos de contacto.</p>
+            </header>
+
+            <form id="multi-step-form" novalidate>
+                
+                <!-- HOJA 1: Información Personal -->
+                <div class="form-step active" data-step="1">
+                    <fieldset class="form-grid">
+                        <legend class="sr-only">Información personal</legend>
+                        
+                        <div class="input-group">
+                            <label for="nombre">Nombre <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i data-lucide="user" class="field-icon"></i>
+                                <input type="text" id="nombre" name="nombre" autocomplete="given-name" required placeholder="Ej. Juan">
+                            </div>
+                            <span class="error-message" id="error-nombre"></span>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="apellido">Apellido <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i data-lucide="user" class="field-icon"></i>
+                                <input type="text" id="apellido" name="apellido" autocomplete="family-name" required placeholder="Ej. Pérez">
+                            </div>
+                            <span class="error-message" id="error-apellido"></span>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="email">Correo electrónico <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i data-lucide="mail" class="field-icon"></i>
+                                <input type="email" id="email" name="email" autocomplete="email" required placeholder="correo@ejemplo.com">
+                            </div>
+                            <span class="error-message" id="error-email"></span>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="telefono">Teléfono <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i data-lucide="phone" class="field-icon"></i>
+                                <input type="tel" id="telefono" name="telefono" autocomplete="tel" required placeholder="+34 600000000">
+                            </div>
+                            <span class="error-message" id="error-telefono"></span>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="fechaNacimiento">Fecha de nacimiento <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i data-lucide="calendar" class="field-icon"></i>
+                                <input type="date" id="fechaNacimiento" name="fechaNacimiento" autocomplete="bday" required>
+                            </div>
+                            <span class="error-message" id="error-fechaNacimiento"></span>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="pais">País <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i data-lucide="globe" class="field-icon"></i>
+                                <select id="pais" name="pais" required autocomplete="country-name">
+                                    <option value="">Selecciona un país</option>
+                                    <option value="España">España</option>
+                                    <option value="México">México</option>
+                                    <option value="Colombia">Colombia</option>
+                                    <option value="Argentina">Argentina</option>
+                                    <option value="Chile">Chile</option>
+                                    <option value="Perú">Perú</option>
+                                    <option value="Estados Unidos">Estados Unidos</option>
+                                </select>
+                            </div>
+                            <span class="error-message" id="error-pais"></span>
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label for="ciudad">Ciudad <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i data-lucide="map-pin" class="field-icon"></i>
+                                <input type="text" id="ciudad" name="ciudad" autocomplete="address-level2" required placeholder="Ej. Madrid">
+                            </div>
+                            <span class="error-message" id="error-ciudad"></span>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- HOJA 2: Información Adicional -->
+                <div class="form-step" data-step="2">
+                    <fieldset class="form-grid">
+                        <legend class="sr-only">Información adicional</legend>
+
+                        <div class="input-group full-width">
+                            <label for="direccion">Dirección <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i data-lucide="home" class="field-icon"></i>
+                                <input type="text" id="direccion" name="direccion" autocomplete="street-address" required placeholder="Calle Principal, 123">
+                            </div>
+                            <span class="error-message" id="error-direccion"></span>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="codigoPostal">Código postal <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i data-lucide="map" class="field-icon"></i>
+                                <input type="text" id="codigoPostal" name="codigoPostal" autocomplete="postal-code" required placeholder="28001">
+                            </div>
+                            <span class="error-message" id="error-codigoPostal"></span>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="profesion">Profesión <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i data-lucide="award" class="field-icon"></i>
+                                <input type="text" id="profesion" name="profesion" required placeholder="Ej. Desarrollador Frontend">
+                            </div>
+                            <span class="error-message" id="error-profesion"></span>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="empresa">Empresa</label>
+                            <div class="input-wrapper">
+                                <i data-lucide="building" class="field-icon"></i>
+                                <input type="text" id="empresa" name="empresa" placeholder="Nombre de la empresa (opcional)">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="experiencia">Nivel de experiencia <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i data-lucide="trending-up" class="field-icon"></i>
+                                <select id="experiencia" name="experiencia" required>
+                                    <option value="">Selecciona nivel</option>
+                                    <option value="Junior">Junior (0-2 años)</option>
+                                    <option value="Intermedio">Intermedio (2-5 años)</option>
+                                    <option value="Senior">Senior (5+ años)</option>
+                                    <option value="Lead">Lead / Arquitecto</option>
+                                </select>
+                            </div>
+                            <span class="error-message" id="error-experiencia"></span>
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label>Tipo de usuario <span class="required">*</span></label>
+                            <div class="radio-group-container">
+                                <label class="radio-card">
+                                    <input type="radio" name="tipoUsuario" value="Independiente" required checked>
+                                    <span class="radio-card-content">
+                                        <i data-lucide="user-check"></i>
+                                        <strong>Freelance / Independiente</strong>
+                                        <span>Trabajo por cuenta propia</span>
+                                    </span>
+                                </label>
+                                <label class="radio-card">
+                                    <input type="radio" name="tipoUsuario" value="Corporativo">
+                                    <span class="radio-card-content">
+                                        <i data-lucide="briefcase"></i>
+                                        <strong>Corporativo</strong>
+                                        <span>Empleado en empresa</span>
+                                    </span>
+                                </label>
+                                <label class="radio-card">
+                                    <input type="radio" name="tipoUsuario" value="Estudiante">
+                                    <span class="radio-card-content">
+                                        <i data-lucide="graduation-cap"></i>
+                                        <strong>Estudiante / Académico</strong>
+                                        <span>Aprendizaje y formación</span>
+                                    </span>
+                                </label>
+                            </div>
+                            <span class="error-message" id="error-tipoUsuario"></span>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- HOJA 3: Preferencias -->
+                <div class="form-step" data-step="3">
+                    <fieldset class="form-grid-single">
+                        <legend class="sr-only">Preferencias del sistema</legend>
+
+                        <div class="input-group">
+                            <label>Selecciona tus áreas de interés principal (Mínimo 1) <span class="required">*</span></label>
+                            <div class="cards-grid">
+                                <label class="selectable-card">
+                                    <input type="checkbox" name="categorias" value="Desarrollo Web">
+                                    <div class="card-body">
+                                        <i data-lucide="code"></i>
+                                        <span>Desarrollo Web</span>
+                                    </div>
+                                </label>
+                                <label class="selectable-card">
+                                    <input type="checkbox" name="categorias" value="UI/UX Design">
+                                    <div class="card-body">
+                                        <i data-lucide="figma"></i>
+                                        <span>UI/UX Design</span>
+                                    </div>
+                                </label>
+                                <label class="selectable-card">
+                                    <input type="checkbox" name="categorias" value="Cloud & DevOps">
+                                    <div class="card-body">
+                                        <i data-lucide="cloud"></i>
+                                        <span>Cloud & DevOps</span>
+                                    </div>
+                                </label>
+                                <label class="selectable-card">
+                                    <input type="checkbox" name="categorias" value="Inteligencia Artificial">
+                                    <div class="card-body">
+                                        <i data-lucide="cpu"></i>
+                                        <span>Inteligencia Artificial</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <span class="error-message" id="error-categorias"></span>
+                        </div>
+
+                        <div class="toggles-section">
+                            <div class="toggle-row">
+                                <div class="toggle-info">
+                                    <strong>Notificaciones por correo</strong>
+                                    <span>Recibe alertas sobre actualizaciones y boletines técnicos.</span>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" name="notifEmail" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="toggle-row">
+                                <div class="toggle-info">
+                                    <strong>Modo oscuro preferido</strong>
+                                    <span>Aplicar interfaz oscura por defecto en tu panel.</span>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" name="modoOscuro">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="comentarios">Comentarios u observaciones adicionales</label>
+                            <textarea id="comentarios" name="comentarios" rows="4" placeholder="Escribe aquí cualquier detalle adicional que consideres relevante..."></textarea>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- HOJA 4: Archivos e Información Complementaria -->
+                <div class="form-step" data-step="4">
+                    <fieldset class="form-grid-single">
+                        <legend class="sr-only">Archivos adjuntos</legend>
+
+                        <div class="input-group">
+                            <label>Imagen de perfil o avatar <span class="required">*</span></label>
+                            <div class="dropzone" id="dropzone-imagen">
+                                <input type="file" id="input-imagen" name="imagenPerfil" accept="image/png, image/jpeg, image/webp" class="file-hidden" required>
+                                <div class="dropzone-content" id="dropzone-content-img">
+                                    <i data-lucide="image" class="dropzone-icon"></i>
+                                    <p>Arrastra tu imagen aquí o <strong>haz clic para explorar</strong></p>
+                                    <span class="dropzone-hint">PNG, JPG o WEBP (Máx. 5MB)</span>
+                                </div>
+                                <div class="preview-container hidden" id="preview-container-img">
+                                    <img id="img-preview" src="" alt="Vista previa">
+                                    <div class="file-details">
+                                        <span id="img-name">nombre.jpg</span>
+                                        <span id="img-size">0 KB</span>
+                                    </div>
+                                    <button type="button" class="btn-remove-file" id="remove-img" aria-label="Eliminar imagen">
+                                        <i data-lucide="trash-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <span class="error-message" id="error-imagenPerfil"></span>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Currículum o Documentación (PDF) <span class="required">*</span></label>
+                            <div class="dropzone" id="dropzone-doc">
+                                <input type="file" id="input-doc" name="documentoCV" accept="application/pdf" class="file-hidden" required>
+                                <div class="dropzone-content" id="dropzone-content-doc">
+                                    <i data-lucide="file-text" class="dropzone-icon"></i>
+                                    <p>Arrastra tu documento PDF aquí o <strong>haz clic para explorar</strong></p>
+                                    <span class="dropzone-hint">Solo archivos PDF (Máx. 10MB)</span>
+                                </div>
+                                <div class="preview-container hidden" id="preview-container-doc">
+                                    <i data-lucide="file-check" class="file-type-icon"></i>
+                                    <div class="file-details">
+                                        <span id="doc-name">cv.pdf</span>
+                                        <span id="doc-size">0 KB</span>
+                                    </div>
+                                    <button type="button" class="btn-remove-file" id="remove-doc" aria-label="Eliminar documento">
+                                        <i data-lucide="trash-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <span class="error-message" id="error-documentoCV"></span>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- HOJA 5: Resumen y Confirmación -->
+                <div class="form-step" data-step="5">
+                    <div class="summary-container">
+                        <h3>Resumen de tu registro</h3>
+                        <p class="summary-subtitle">Revisa que toda la información sea correcta antes de enviar.</p>
+
+                        <div class="summary-card">
+                            <div class="summary-card-header">
+                                <h4>Información Personal</h4>
+                                <button type="button" class="btn-edit-step" data-target="1"><i data-lucide="edit-3"></i> Editar</button>
+                            </div>
+                            <div class="summary-grid" id="resumen-personal"></div>
+                        </div>
+
+                        <div class="summary-card">
+                            <div class="summary-card-header">
+                                <h4>Información Adicional</h4>
+                                <button type="button" class="btn-edit-step" data-target="2"><i data-lucide="edit-3"></i> Editar</button>
+                            </div>
+                            <div class="summary-grid" id="resumen-adicional"></div>
+                        </div>
+
+                        <div class="summary-card">
+                            <div class="summary-card-header">
+                                <h4>Preferencias</h4>
+                                <button type="button" class="btn-edit-step" data-target="3"><i data-lucide="edit-3"></i> Editar</button>
+                            </div>
+                            <div class="summary-grid" id="resumen-preferencias"></div>
+                        </div>
+
+                        <div class="summary-card">
+                            <div class="summary-card-header">
+                                <h4>Archivos Adjuntos</h4>
+                                <button type="button" class="btn-edit-step" data-target="4"><i data-lucide="edit-3"></i> Editar</button>
+                            </div>
+                            <div class="summary-grid" id="resumen-archivos"></div>
+                        </div>
+
+                        <div class="terms-container">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terminos" name="terminos" required>
+                                <span>Acepto los <a href="#" onclick="return false;">términos y condiciones</a> del servicio <span class="required">*</span></span>
+                            </label>
+                            <span class="error-message" id="error-terminos"></span>
+
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="privacidad" name="privacidad" required>
+                                <span>He leído y acepto la <a href="#" onclick="return false;">política de privacidad y tratamiento de datos</a> <span class="required">*</span></span>
+                            </label>
+                            <span class="error-message" id="error-privacidad"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones de Navegación -->
+                <div class="form-navigation">
+                    <button type="button" id="btn-prev" class="btn btn-secondary" style="display: none;">
+                        <i data-lucide="arrow-left"></i> Anterior
+                    </button>
+                    <button type="button" id="btn-next" class="btn btn-primary">
+                        Siguiente <i data-lucide="arrow-right"></i>
+                    </button>
+                    <button type="submit" id="btn-submit" class="btn btn-success" style="display: none;">
+                        <span class="btn-text">Finalizar Registro</span>
+                        <span class="spinner hidden"></span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Pantalla de Éxito (Oculta por defecto) con los dos botones y el modal -->
+            <div class="success-screen hidden" id="success-screen">
+                <div class="success-icon-wrapper">
+                    <i data-lucide="check-circle"></i>
+                </div>
+                <h2>¡Registro completado con éxito!</h2>
+                <p>Hemos recibido tu información y tu solicitud ha sido procesada correctamente.</p>
+                
+                <div class="success-ticket">
+                    <span>Identificador de solicitud</span>
+                    <strong id="ticket-id">REG-849203-2026</strong>
+                </div>
+
+                <!-- Nuevos botones agregados para activar el Pop-up / Modal -->
+                <div class="success-actions" style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                    <button type="button" class="btn btn-secondary" onclick="openModal('Ayuda y Soporte', '¿Tienes problemas con tu solicitud o necesitas asistencia? Contáctanos directamente en soporte@portalregistro.com')">
+                        <i data-lucide="help-circle"></i> Ayuda
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="openModal('Detalles del Registro', 'Tu registro ha sido cifrado y validado correctamente en nuestros servidores principales bajo el identificador único generado.')">
+                        <i data-lucide="info"></i> Ver detalles
+                    </button>
+                </div>
+
+                <button type="button" class="btn btn-primary" id="btn-restart">
+                    <i data-lucide="rotate-ccw"></i> Comenzar nuevamente
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Componente Pop-up / Modal Nativo HTML5 -->
+    <dialog id="info-modal" class="modal">
+        <div class="modal-content">
+            <h3 id="modal-title">Título</h3>
+            <p id="modal-body">Cuerpo del mensaje...</p>
+            <button id="close-modal" class="btn btn-secondary">Cerrar</button>
+        </div>
+    </dialog>
+
+    <!-- Modal de Ayuda -->
+    <dialog id="Ayuda y Soporte">
+    <div class="modal-content">
+        <h3>Ayuda y Soporte</h3>
+        <p>Aquí puedes agregar la información de ayuda para los usuarios.</p>
+        <button onclick="closeModal('Ayuda y Soporte')">Cerrar</button>
+    </div>
+    </dialog>
+
+    <!-- Modal de Detalles -->
+    <dialog id="Detalles del Registro">
+    <div class="modal-content">
+        <h3>Detalles del Registro</h3>
+        <p>Aquí se muestran los detalles completos de la solicitud.</p>
+        <button onclick="closeModal('Detalles del Registro')">Cerrar</button>
+    </div>
+    </dialog>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
